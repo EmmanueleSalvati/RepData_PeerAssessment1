@@ -1,11 +1,7 @@
----
-title: 'Reproducible Research: Peer Assessment 1'
-output:
-  html_document:
-    keep_md: yes
----
+# Reproducible Research: Peer Assessment 1
 
-```{r setoptions, echo = TRUE}
+
+```r
 library(knitr)
 opts_chunk$set(echo = TRUE)
 ```
@@ -14,7 +10,8 @@ opts_chunk$set(echo = TRUE)
 
 First we unzip the activity file and load the data.frame activity.csv.
 
-```{r echo = TRUE}
+
+```r
 if (!file.exists("./activity.csv")) {
         unzip("./activity.zip")
 }
@@ -24,11 +21,14 @@ df <- read.csv("./activity.csv")
 Transform the date column into the date format, then group the data frame by
 date.
 
-```{r echo = TRUE}
+
+```r
 df$date <- as.Date(df$date, format = "%Y-%m-%d")
 daily_df <- aggregate(steps ~ date, data = df, sum)
 hist(daily_df$steps)
 ```
+
+![](./PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
 ## What is mean total number of steps taken per day?
 
 
